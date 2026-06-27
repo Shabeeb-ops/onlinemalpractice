@@ -17,11 +17,12 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 
 from onlinemalpratice import settings
 
 urlpatterns = [
+    path('', lambda request: redirect('myapp/admin_login/')),
     path('admin/', admin.site.urls),
-    path('myapp/',include('myapp.urls')),
-    path('/myapp/',include('myapp.urls'))
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    path('myapp/', include('myapp.urls')),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
