@@ -1,0 +1,70 @@
+{% extends 'staff/home.html' %}
+{% block body %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Exam Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 400px;
+    }
+    td {
+      padding: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 6px;
+    }
+    .btn {
+      padding: 8px 16px;
+      background: #007BFF;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Add Exam</h2>
+
+  <form>
+    <table border="0">
+      <tr>
+        <td><label for="subject">Subject:</label></td>
+        <td><input type="text" id="subject" name="subject" required></td>
+      </tr>
+      <tr>
+        <td><label for="exam">Exam:</label></td>
+        <td><input type="text" id="exam" name="exam" required></td>
+      </tr>
+      <tr>
+        <td><label for="date">Date:</label></td>
+        <td><input type="date" id="date" name="date" required></td>
+      </tr>
+      <tr>
+        <td><label for="time">Time:</label></td>
+        <td><input type="time" id="time" name="time" required></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+          <a href="" class="btn 3">Add</a>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</body>
+</html>
+{% endblock %}

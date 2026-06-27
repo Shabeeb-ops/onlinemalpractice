@@ -1,0 +1,29 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+
+<!-- Bootstrap & Font Awesome CDN (only if not already in base template) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow p-4 w-100" style="max-width: 600px;">
+    <h4 class="mb-4 text-center"><i class="fas fa-reply me-2"></i>Send a Reply</h4>
+
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="reply" class="form-label"><i class="fas fa-comment-dots me-2"></i>Your Reply</label>
+        <textarea id="reply" name="reply" rows="5" class="form-control" placeholder="Type your reply here..." required></textarea>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" name="send" class="btn btn-primary">
+          <i class="fas fa-paper-plane me-1"></i>Send
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

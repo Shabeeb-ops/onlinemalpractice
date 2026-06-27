@@ -1,0 +1,87 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+<html lang="en">
+<head>
+          <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Verify Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="text"] {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 200px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+
+    <script>
+     				$(document).ready(function ()
+            {
+            $('#example').DataTable();
+            });
+      </script>
+</head>
+<body>
+
+    <h2>Verify Students</h2>
+
+    <!-- Search input -->
+{#    <input type="text" id="searchInput" placeholder="Search by name..." >#}
+
+    <!-- Students Table -->
+    <table id="example">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for i in data %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.email }}<br></td>
+                <td>{{ i.place }}<br>{{ i.post }}<br>{{ i.pin }} </td>
+                <td>{{ i.contact }}</td>
+                {% if i.status == 'pending' %}
+                <td><a href="/myapp/accept_student/{{ i.id }}" class="btn btn-success">Accept</a></td>
+                    <td><a href="/myapp/reject_student/{{ i.id }}" class="btn btn-danger">Reject</a></td>
+            {% else %}
+                <td>{{ i.status }}</td>
+                    <td></td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+</body>
+</html>
+
+{% endblock %}

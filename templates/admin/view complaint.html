@@ -1,0 +1,65 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Complaints</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center;">View Complaints</h2>
+
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Complaint</th>
+            <th>Date</th>
+            <th>Reply</th>
+        </tr>
+        {% for i in data  %}
+        <tr>
+            <td>{{ i.STUDENT.name}}</td>
+            <td>{{ i.complaint }}</td>
+            <td>{{ i.date}}</td>
+            {% if i.reply == "pending" %}
+            <td><a href="/myapp/admin_reply/{{ i.id }}#about">Reply</a></td>
+        {% else %}
+         <td>{{ i.reply }}</td>
+        {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+
+{% endblock %}

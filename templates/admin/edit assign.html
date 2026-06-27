@@ -1,0 +1,48 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+
+<html>
+<head>
+  <title>Assign Staff</title>
+  <style>
+    .form-table {
+      margin-top: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+    }
+    .form-table td {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Assign Staff</h2>
+
+  <form action="/myapp/admin_edit_assign_staff_post/" method="post">{% csrf_token %}
+    <table class="form-table">
+      <tr>
+        <td>
+          <label for="subject">Subject:</label>
+{#          <input type="text" id="subject" name="subject" required>#}
+
+            <select name="subject">
+            {% for i in data %}
+                <option value="{{ i.id }}" {% if sub.SUBJECT_id == i.id %}selected{% endif %}>{{ i.subject }}</option>
+            {% endfor %}
+            </select>
+
+        </td>
+        <td>
+          <input type="submit" value="Assign">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</body>
+</html>
+
+
+{% endblock %}

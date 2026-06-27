@@ -1,0 +1,64 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 60%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Feedback</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Date</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i in data %}
+            <tr>
+                <td>{{ i.STUDENT.name }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.feedback }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+{% endblock %}

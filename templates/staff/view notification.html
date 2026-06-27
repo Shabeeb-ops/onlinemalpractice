@@ -1,0 +1,83 @@
+{% extends 'staff/home.html' %}
+{% block body %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Notifications (Card View)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Custom styling for the notification list container */
+    .notification-list-card {
+      max-width: 900px;
+      margin: auto;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+    /* Style for individual list items/notifications */
+    .list-group-item-notification {
+      border: none;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.2s ease;
+    }
+    .list-group-item-notification:last-child {
+      border-bottom: none;
+    }
+    .list-group-item-notification:hover {
+      background-color: #f8f9fa; /* Light hover background */
+    }
+    .icon-wrapper {
+        min-width: 40px; /* Space for the icon */
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5 mb-5">
+
+    <div class="notification-list-card card">
+      <div class="card-header bg-primary text-white text-center rounded-top-3">
+        <h2 class="h4 mb-0 py-2">
+          <i class="fas fa-bell me-2"></i> System Notifications
+        </h2>
+      </div>
+
+      <ul class="list-group list-group-flush">
+
+        {% for i in data %}
+          <li class="list-group-item list-group-item-notification d-flex justify-content-between align-items-start p-3">
+
+            <div class="d-flex align-items-start flex-grow-1 me-3">
+                <div class="icon-wrapper text-info me-3 pt-1">
+                    <i class="fas fa-envelope-open-text fa-lg"></i>
+                </div>
+                <div>
+                    <p class="mb-0 fw-bold">{{ i.notification }}</p>
+                </div>
+            </div>
+
+            <div class="text-end text-muted small flex-shrink-0">
+                <p class="mb-0">{{ i.date }}</p>
+            </div>
+
+          </li>
+        {% empty %}
+          <li class="list-group-item p-4 text-center text-muted">
+            <i class="fas fa-check-circle fa-2x mb-2"></i>
+            <p class="mb-0">All clear! No new notifications to display.</p>
+          </li>
+        {% endfor %}
+
+      </ul>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+{% endblock %}

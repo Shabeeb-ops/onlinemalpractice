@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs/Editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Media & static uploads
+media/
+
+# Large model / weight files (too big for GitHub)
+*.h5
+*.onnx
+*.pkl
+*.pb
+*.pt
+*.pth
+*.weights
+model1.h5
+
+# YOLO weights (248MB - exceeds GitHub 100MB limit)
+yolo/yolov3.weights
+
+# Haar cascade XML (large binary)
+model/haarcascade_frontalface_default.xml
+
+# Output images / temporary files
+output_image.jpg
+eye_face_direction.txt
+sample.txt
+
+# OS files
+.DS_Store
+Thumbs.db

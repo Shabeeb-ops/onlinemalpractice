@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Dashboard – Online Exam Malpractice Detection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 antialiased">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gray-800">ExamSafe</h1>
+            <p class="text-xs text-gray-500">Staff Portal</p>
+          </div>
+        </div>
+        <ul class="flex space-x-1">
+{#          <li><a href="/myapp/staff_view_exam_details/#about" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Exams</a></li>#}
+          <li><a href="/myapp/student_list/#about" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Students</a></li>
+          <li><a href="/myapp/staff_manage_study_material/#about" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Materials</a></li>
+          <li><a href="/myapp/staff_view_notification/#about" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Notifications</a></li>
+          <li><a href="/myapp/staff_feedback/#about" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Feedback</a></li>
+          <li><a href="/myapp/changepassword/#about" class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition">Change Password</a></li>
+          <li><a href="/myapp/logouta/" class="px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-4xl font-bold mb-2">Welcome back,</h2>
+          <p class="text-blue-100 text-lg">Monitor examinations and ensure academic integrity</p>
+          <div class="mt-6 flex items-center space-x-6 text-sm">
+            <div class="flex items-center space-x-2">
+              <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span>System Active</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span id="current-time"></span>
+            </div>
+          </div>
+        </div>
+        <div class="hidden md:block">
+{#          <img src="https://picsum.photos/400/300?education" alt="Education" class="rounded-2xl shadow-2xl opacity-90">#}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+{#  <section class="max-w-7xl mx-auto px-6 -mt-8">#}
+{#    <div class="grid md:grid-cols-4 gap-6">#}
+{#      <div class="stat-card rounded-xl p-6 shadow-lg border border-gray-100">#}
+{#        <div class="flex items-center justify-between">#}
+{#          <div>#}
+{#            <p class="text-sm font-medium text-gray-600">Active Exams</p>#}
+{#            <h3 class="text-3xl font-bold text-gray-800 mt-1">12</h3>#}
+{#          </div>#}
+{#          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">#}
+{#            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">#}
+{#              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>#}
+{#            </svg>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{##}
+{#      <div class="stat-card rounded-xl p-6 shadow-lg border border-gray-100">#}
+{#        <div class="flex items-center justify-between">#}
+{#          <div>#}
+{#            <p class="text-sm font-medium text-gray-600">Students Online</p>#}
+{#            <h3 class="text-3xl font-bold text-gray-800 mt-1">248</h3>#}
+{#          </div>#}
+{#          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">#}
+{#            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">#}
+{#              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>#}
+{#            </svg>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{##}
+{#      <div class="stat-card rounded-xl p-6 shadow-lg border border-gray-100">#}
+{#        <div class="flex items-center justify-between">#}
+{#          <div>#}
+{#            <p class="text-sm font-medium text-gray-600">Alerts Today</p>#}
+{#            <h3 class="text-3xl font-bold text-gray-800 mt-1">7</h3>#}
+{#          </div>#}
+{#          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">#}
+{#            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">#}
+{#              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>#}
+{#            </svg>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{##}
+{#      <div class="stat-card rounded-xl p-6 shadow-lg border border-gray-100">#}
+{#        <div class="flex items-center justify-between">#}
+{#          <div>#}
+{#            <p class="text-sm font-medium text-gray-600">Reports Pending</p>#}
+{#            <h3 class="text-3xl font-bold text-gray-800 mt-1">3</h3>#}
+{#          </div>#}
+{#          <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">#}
+{#            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">#}
+{#              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>#}
+{#            </svg>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </section>#}
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-6 py-10">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6">Quick Actions</h3>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      <!-- Card 1 -->
+      <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 card-hover">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Staff Profile</h3>
+        <p class="text-gray-600 text-center text-sm mb-6">Manage your account information and preferences</p>
+        <a href="/myapp/staff_edit_profile/#about" class="block w-full text-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium">View Profile</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 card-hover">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Exam</h3>
+        <p class="text-gray-600 text-center text-sm mb-6">Examinations</p>
+        <a href="/myapp/staff_view_exam_details/#about" class="block w-full text-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-medium">Open Exam</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 card-hover">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">Malpractice Reports</h3>
+        <p class="text-gray-600 text-center text-sm mb-6">Review and analyze detected malpractice incidents</p>
+        <a href="/myapp/staff_view_malpratice/#about" class="block w-full text-center bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition font-medium">View Reports</a>
+      </div>
+    </div>
+
+    <!-- Content Block -->
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-8" id="about">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-bold text-gray-800">Dashboard Content</h3>
+{#        <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">View All</button>#}
+      </div>
+      {% block body %}
+      <div class="text-center py-12 text-gray-500">
+        <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <p class="text-lg">Content area for dynamic information</p>
+        <p class="text-sm mt-2">Recent activities and notifications will appear here</p>
+      </div>
+      {% endblock %}
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-16">
+    <div class="max-w-7xl mx-auto px-6 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-sm">© 2025 ExamSafe – Staff Module</p>
+          <p class="text-xs text-gray-400 mt-1">Developed for College Exam Monitoring</p>
+        </div>
+        <div class="flex space-x-6 text-sm">
+{#          <a href="#" class="hover:text-white transition">Privacy Policy</a>#}
+{#          <a href="#" class="hover:text-white transition">Terms of Service</a>#}
+{#          <a href="#" class="hover:text-white transition">Support</a>#}
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Update current time
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+      document.getElementById('current-time').textContent = timeString;
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+
+</body>
+</html>

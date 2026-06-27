@@ -1,0 +1,46 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Subject Assignments</h2>
+    <a href="/myapp/admin_assign_staff#about" class="btn btn-success">Add New</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Sl No</th>
+          <th scope="col">Staff Details</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>
+            <strong>{{ i.STAFF.name }}</strong><br>
+            {{ i.STAFF.qualification }}<br>
+            {{ i.STAFF.email }}
+          </td>
+          <td>{{ i.SUBJECT.subject }}</td>
+          <td>
+{#            <a href="/myapp/admin_edit_aasign/{{ i.id }}" class="btn btn-primary btn-sm mb-1">Edit</a>#}
+            <a href="/myapp/admin_delete_assign/{{ i.id }}" class="btn btn-danger btn-sm"
+               onclick="return confirm('Are you sure you want to delete this assignment?');">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="text-center">No subject assignments found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

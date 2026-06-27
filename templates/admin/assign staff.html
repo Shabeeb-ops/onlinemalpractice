@@ -1,0 +1,34 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+
+<!-- Bootstrap & Font Awesome (if not already in base) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card shadow p-4 w-100" style="max-width: 500px;">
+    <h4 class="text-center mb-4"><i class="fas fa-user-plus me-2"></i>Assign Staff to Subject</h4>
+
+    <form action="/myapp/admin_assign_staff_post/" method="post">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="subject" class="form-label"><i class="fas fa-book me-2"></i>Subject</label>
+        <select name="subject" id="subject" class="form-select" required>
+          <option value="" disabled selected>-- Select Subject --</option>
+          {% for i in data %}
+            <option value="{{ i.id }}">{{ i.subject }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-check-circle me-1"></i>Assign
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

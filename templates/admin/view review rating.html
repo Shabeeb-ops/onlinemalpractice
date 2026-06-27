@@ -1,0 +1,73 @@
+{% extends 'admin/home.html' %}
+{% block body %}
+
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .rating {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Reviews and Ratings</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Date</th>
+                <th>Review</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in data %}
+            <tr>
+                <td>{{ i.STUDENT.name }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.review }}</td>
+                <td class="rating">{{ i.rating }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+
+
+{% endblock %}

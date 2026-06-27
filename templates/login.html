@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLTSGeek Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, grey, #a25aff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .login-container {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+        .login-card {
+            width: 50%;
+            padding-right: 20px;
+        }
+        .login-card img.logo {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            text-align: left;
+            display: block;
+        }
+        .btn-login {
+            background-color: #6b48ff;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+        }
+        .btn-login:hover {
+            background-color: #5a3ce6;
+        }
+        .social-login {
+            margin-top: 20px;
+        }
+        .social-login a {
+            margin: 0 10px;
+            color: #6c757d;
+            font-size: 24px;
+        }
+        .footer-links a {
+            color: #6c757d;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .illustration {
+            width: 50%;
+            opacity: 0.7;
+            margin-left: 20px;
+        }
+        .decorative-arrow {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #00ffff;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            left: 20px;
+            top: 20px;
+        }
+        .register-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid #6c757d;
+            border-radius: 5px;
+            padding: 5px 15px;
+            color: #6c757d;
+            text-decoration: none;
+        }
+        .register-btn:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+{#    <div class="decorative-arrow"></div>#}
+    <div class="login-container">
+        <div class="login-card">
+            <strong><h2 style="font-size: 46px;"><center>LOGIN</center></h2></strong>
+            <form method="post" action="/myapp/login_post/">{% csrf_token %}
+
+                {% if messages %}
+    <div class="alert alert-warning" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="email" placeholder="Your Username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <a href="#" class="text-muted mb-3 d-block">Forgot password?</a>
+                <button type="submit" class="btn btn-login">Login</button>
+            </form>
+        </div>
+        <div class="illustration">
+            <img src="/static/bg.png" alt="Illustration" class="img-fluid">
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
