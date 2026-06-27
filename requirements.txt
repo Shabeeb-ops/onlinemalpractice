@@ -3,5 +3,4 @@ asgiref==3.11.1
 sqlparse==0.5.5
 pillow==12.2.0
 tzdata==2026.2
-PyMySQL==1.2.0
-mysqlclient==2.2.8
+whitenoise==6.9.0
