@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sypaz_s6agj+j5&ehcaiah^p5@vaee5ptpp3h%o)-7#6_#1rb('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+import os as _os
+DEBUG = not _os.environ.get('VERCEL', False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -74,11 +75,17 @@ WSGI_APPLICATION = 'onlinemalpratice.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+# On Vercel, the filesystem is read-only except /tmp, so SQLite must go there.
+import os as _os
+if _os.environ.get('VERCEL'):
+    _DB_PATH = '/tmp/db.sqlite3'
+else:
+    _DB_PATH = str(BASE_DIR / 'db.sqlite3')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': _DB_PATH,
     }
 }
 
