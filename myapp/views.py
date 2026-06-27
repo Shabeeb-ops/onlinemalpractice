@@ -29,10 +29,17 @@ def logouta(request):
 
 @csrf_exempt
 def admin_login(request):
-    ob=User.objects.get(id=5)
-    ob.password=make_password("shabeeb")
-    ob.save()
-    return render(request,'login.html')
+    try:
+        ob = User.objects.get(id=5)
+        ob.password = make_password("shabeeb")
+        ob.save()
+    except User.DoesNotExist:
+        # On a fresh deployment (like Vercel), create a default admin user if not present
+        if not User.objects.filter(username="admin").exists():
+            user = User.objects.create_superuser(username="admin", email="admin@example.com", password="shabeeb")
+            admin_group, _ = Group.objects.get_or_create(name="Admin")
+            user.groups.add(admin_group)
+    return render(request, 'login.html')
 
 @csrf_exempt
 def login_post(request):
